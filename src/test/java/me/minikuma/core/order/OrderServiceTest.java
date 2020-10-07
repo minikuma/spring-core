@@ -1,10 +1,13 @@
 package me.minikuma.core.order;
 
+import me.minikuma.core.AppConfig;
 import me.minikuma.core.member.Grade;
 import me.minikuma.core.member.Member;
 import me.minikuma.core.member.MemberService;
 import me.minikuma.core.member.MemberServiceImpl;
 import org.junit.jupiter.api.Assertions;
+import org.junit.jupiter.api.BeforeEach;
+import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 
 /**
@@ -14,10 +17,21 @@ import org.junit.jupiter.api.Test;
  */
 public class OrderServiceTest {
 
-    MemberService memberService = new MemberServiceImpl();
-    OrderService orderService = new OrderServiceImpl();
+//    MemberService memberService = new MemberServiceImpl();
+//    OrderService orderService = new OrderServiceImpl();
+
+    private MemberService memberService;
+    private OrderService orderService;
+
+    @BeforeEach
+    void init() {
+        AppConfig appConfig = new AppConfig();
+        memberService = appConfig.memberService();
+        orderService = appConfig.orderService();
+    }
 
     @Test
+    @DisplayName("member를 생성한다.")
     void createOrder() {
         Long memberId = 1L;
         Member member = new Member(memberId, "memberA", Grade.VIP);

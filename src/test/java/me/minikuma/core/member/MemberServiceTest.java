@@ -1,6 +1,9 @@
 package me.minikuma.core.member;
 
+import me.minikuma.core.AppConfig;
 import org.junit.jupiter.api.Assertions;
+import org.junit.jupiter.api.BeforeEach;
+import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 
 /**
@@ -10,9 +13,16 @@ import org.junit.jupiter.api.Test;
  */
 public class MemberServiceTest {
 
-    MemberService memberService = new MemberServiceImpl();
+    private MemberService memberService;
+
+    @BeforeEach
+    public void init() {
+        AppConfig appConfig = new AppConfig();
+        memberService = appConfig.memberService();
+    }
 
     @Test
+    @DisplayName("member를 가입한다.")
     void join() {
         // given
         Member member = new Member(1l, "MemberA", Grade.VIP);

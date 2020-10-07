@@ -1,7 +1,6 @@
 package me.minikuma.core.order;
 
 import me.minikuma.core.discount.DiscountPolicy;
-import me.minikuma.core.discount.FixDiscountPolicy;
 import me.minikuma.core.member.Member;
 import me.minikuma.core.member.MemberRepository;
 import me.minikuma.core.member.MemoryMemberRepository;
@@ -13,8 +12,17 @@ import me.minikuma.core.member.MemoryMemberRepository;
  */
 public class OrderServiceImpl implements OrderService {
 
-    private final MemberRepository memberRepository = new MemoryMemberRepository();
-    private final DiscountPolicy discountPolicy = new FixDiscountPolicy();
+//    private final MemberRepository memberRepository = new MemoryMemberRepository();
+//    private final DiscountPolicy discountPolicy = new FixDiscountPolicy();
+//    private final DiscountPolicy discountPolicy = new RateDiscountPolicy();
+
+    private final MemberRepository memberRepository;
+    private final DiscountPolicy discountPolicy;
+
+    public OrderServiceImpl(MemberRepository memberRepository, DiscountPolicy discountPolicy) {
+        this.memberRepository = memberRepository;
+        this.discountPolicy = discountPolicy;
+    }
 
     @Override
     public Order createOrder(Long memberId, String itemName, int itemPrice) {
