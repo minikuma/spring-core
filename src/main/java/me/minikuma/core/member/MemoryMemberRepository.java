@@ -1,5 +1,7 @@
 package me.minikuma.core.member;
 
+import org.springframework.stereotype.Component;
+
 import java.util.HashMap;
 import java.util.Map;
 import java.util.concurrent.ConcurrentHashMap;
@@ -9,6 +11,7 @@ import java.util.concurrent.ConcurrentHashMap;
  * Blog : https://minikuma-laboratory.tistory.com/
  * Github : http://github.com/minikuma
  */
+@Component
 public class MemoryMemberRepository implements MemberRepository {
 
     private static ConcurrentHashMap<Long, Member> store = new ConcurrentHashMap<>();

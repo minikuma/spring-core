@@ -4,12 +4,15 @@ import me.minikuma.core.discount.DiscountPolicy;
 import me.minikuma.core.member.Member;
 import me.minikuma.core.member.MemberRepository;
 import me.minikuma.core.member.MemoryMemberRepository;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Component;
 
 /**
  * Created by wminikuma@gmail.com on 2020/10/06
  * Blog : https://minikuma-laboratory.tistory.com/
  * Github : http://github.com/minikuma
  */
+@Component
 public class OrderServiceImpl implements OrderService {
 
 //    private final MemberRepository memberRepository = new MemoryMemberRepository();
@@ -19,6 +22,7 @@ public class OrderServiceImpl implements OrderService {
     private final MemberRepository memberRepository;
     private final DiscountPolicy discountPolicy;
 
+    @Autowired
     public OrderServiceImpl(MemberRepository memberRepository, DiscountPolicy discountPolicy) {
         this.memberRepository = memberRepository;
         this.discountPolicy = discountPolicy;

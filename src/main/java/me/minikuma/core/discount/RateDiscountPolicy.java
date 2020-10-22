@@ -2,12 +2,14 @@ package me.minikuma.core.discount;
 
 import me.minikuma.core.member.Grade;
 import me.minikuma.core.member.Member;
+import org.springframework.stereotype.Component;
 
 /**
  * Created by wminikuma@gmail.com on 2020/10/07
  * Blog : https://minikuma-laboratory.tistory.com/
  * Github : http://github.com/minikuma
  */
+@Component
 public class RateDiscountPolicy implements DiscountPolicy {
 
     private int discountPercent = 10;
