@@ -1,7 +1,9 @@
 package me.minikuma.core.discount;
 
+import me.minikuma.core.annotation.MainDiscountPolicy;
 import me.minikuma.core.member.Grade;
 import me.minikuma.core.member.Member;
+import org.springframework.context.annotation.Primary;
 import org.springframework.stereotype.Component;
 
 /**
@@ -10,6 +12,7 @@ import org.springframework.stereotype.Component;
  * Github : http://github.com/minikuma
  */
 @Component
+@MainDiscountPolicy
 public class RateDiscountPolicy implements DiscountPolicy {
 
     private int discountPercent = 10;

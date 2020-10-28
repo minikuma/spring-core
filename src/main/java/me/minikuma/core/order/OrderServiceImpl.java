@@ -1,11 +1,13 @@
 package me.minikuma.core.order;
 
 import lombok.RequiredArgsConstructor;
+import me.minikuma.core.annotation.MainDiscountPolicy;
 import me.minikuma.core.discount.DiscountPolicy;
 import me.minikuma.core.member.Member;
 import me.minikuma.core.member.MemberRepository;
 import me.minikuma.core.member.MemoryMemberRepository;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.stereotype.Component;
 
 /**
@@ -14,11 +16,16 @@ import org.springframework.stereotype.Component;
  * Github : http://github.com/minikuma
  */
 @Component
-@RequiredArgsConstructor
 public class OrderServiceImpl implements OrderService {
 
     private final MemberRepository memberRepository;
     private final DiscountPolicy discountPolicy;
+
+    @Autowired
+    public OrderServiceImpl(MemberRepository memberRepository, @MainDiscountPolicy DiscountPolicy discountPolicy) {
+        this.memberRepository = memberRepository;
+        this.discountPolicy = discountPolicy;
+    }
 
     @Override
     public Order createOrder(Long memberId, String itemName, int itemPrice) {
