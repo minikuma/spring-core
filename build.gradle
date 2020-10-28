@@ -18,7 +18,20 @@ dependencies {
         exclude group: 'org.junit.vintage', module: 'junit-vintage-engine'
     }
     testCompile("org.assertj:assertj-core:3.11.1")
+    //lombok 라이브러리 추가 시작
+    compileOnly 'org.projectlombok:lombok'
+    annotationProcessor 'org.projectlombok:lombok'
+    testCompileOnly 'org.projectlombok:lombok'
+    testAnnotationProcessor 'org.projectlombok:lombok'
+    //lombok 라이브러리 추가 끝
 }
+// 롬복 설정 시작
+configurations {
+    compileOnly {
+        extendsFrom annotationProcessor
+    }
+}
+// 롬복 설정 종료
 
 test {
     useJUnitPlatform()
