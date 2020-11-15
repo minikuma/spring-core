@@ -1,7 +1,5 @@
 ### (Study-001) Spring Core   
 
-https://img.shields.io/appveyor/build/minikuma/spring-core?style=flat-square   
-
 🧐스터디 흐름  
 
 ▶ 객체 지향의 설계의 개념   
